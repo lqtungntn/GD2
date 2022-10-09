@@ -15,13 +15,18 @@ class ArrowDirection(pygame.sprite.Sprite):
         pos = self.GetPosition()
         Global.WIN.blit(image_copy, (self.Position[0] + pos[0], self.Position[1] + pos[1]))
 
-    def Input(self, event):
+    def Input(self, event, team):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_s:
-                self.Angle = (self.Angle + 45) % 360
-            elif event.key == pygame.K_w:
-                self.Angle = (self.Angle - 45 + 360) % 360
-
+            if team == 0:
+                if event.key == pygame.K_s:
+                    self.Angle = (self.Angle + 45) % 360
+                elif event.key == pygame.K_w:
+                    self.Angle = (self.Angle - 45 + 360) % 360
+            else:
+                if event.key == pygame.K_DOWN:
+                    self.Angle = (self.Angle + 45) % 360
+                elif event.key == pygame.K_UP:
+                    self.Angle = (self.Angle - 45 + 360) % 360
     def GetVector(self):
         if self.Angle == 0:
             return [-1, 0]

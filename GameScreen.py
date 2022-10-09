@@ -154,7 +154,7 @@ class GameScreen(pygame.sprite.Group):
                 for idx in self.CurFB:
                     self.ListFB[idx].Input(event)
             else:
-                self.AD.Input(event)
+                self.AD.Input(event, self.BallImage.Team)
                 self.Pow.Input(event, self.BallImage.Team)
         return run
 
