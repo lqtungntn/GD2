@@ -7,6 +7,9 @@
   + C: Kéo thanh lực
   + X: Sút
  F: Để đổi nhân vật
+ 
+ 
+ 
  Player 2:
  Mũi tên lên, xuống, trái, phải: Di chuyển nhân vật
  J: Xoạc bóng
