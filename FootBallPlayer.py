@@ -88,11 +88,11 @@ class FootBallPlayer(pygame.sprite.Sprite):
         if self.IsStun:
             if self.Counter == Global.FPS:
                 self.IsStun = False
+                self.Counter = 0
             else:
                 self.Counter += 1
             self.State = 0
             self.HaveBall = False
-            self.Counter += 1
             self.CurImage = 0.0
             self.Speed = [0, 0]
             if (self.FaceDic == 1):

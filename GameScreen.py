@@ -130,7 +130,7 @@ class GameScreen(pygame.sprite.Group):
                     else:
                         self.Pow.Begin = True
                     self.Pow.Energy = 0.0
-                elif event.key == pygame.K_f and self.BallImage.State == 1:
+                elif event.key == pygame.K_f and self.BallImage.Team != 0:
                     self.CurFB[0] = (self.CurFB[0] + 1) % 5
                 if Global.MODE == 1:
                     if event.key == pygame.K_j and self.BallImage.Team == 0:
@@ -153,7 +153,7 @@ class GameScreen(pygame.sprite.Group):
                         else:
                             self.Pow.Begin = True
                         self.Pow.Energy = 0.0
-                    elif event.key == pygame.K_i and self.BallImage.State == 1:
+                    elif event.key == pygame.K_i and self.BallImage.Team != 1:
                         self.CurFB[1] = (self.CurFB[1] + 1) % 5 + 5
             if self.GameState == 0:
                 for idx in self.CurFB:
