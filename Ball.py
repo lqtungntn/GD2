@@ -53,7 +53,7 @@ class Ball(pygame.sprite.Sprite):
         self.State = 1
 
     def CollidePlayer(self, img):
-        Tolerance = self.Speed
+        Tolerance = 20
         if abs(img.Hcn.top - self.Hcn.bottom) < Tolerance:
             self.VectorUnit[1] = -self.VectorUnit[1]
         if abs(img.Hcn.bottom - self.Hcn.top) < Tolerance:

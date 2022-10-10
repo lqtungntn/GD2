@@ -115,7 +115,7 @@ class GameScreen(pygame.sprite.Group):
                         self.ListFB[self.BallImage.Player].IsStun = True
                         self.BallImage.Team = self.FIT[self.BallImage.Player]
                         self.BallImage.Player = self.CurFB[0]
-                elif event.key == pygame.K_x and self.BallImage.Player != -1:
+                elif event.key == pygame.K_x and self.BallImage.Player != -1 and self.BallImage.Team == 0:
                     self.GameState = 1 - self.GameState
                     if self.GameState == 0:
                         if self.BallImage.Team == 1:
@@ -136,7 +136,7 @@ class GameScreen(pygame.sprite.Group):
                             self.ListFB[self.BallImage.Player].IsStun = True
                             self.BallImage.Team = self.FIT[self.BallImage.Player]
                             self.BallImage.Player = self.CurFB[1]
-                    elif event.key == pygame.K_k and self.BallImage.Player != -1:
+                    elif event.key == pygame.K_k and self.BallImage.Player != -1 and self.BallImage.Team == 1:
                         self.GameState = 1 - self.GameState
                         if self.GameState == 0:
                             if self.BallImage.Team == 1:
