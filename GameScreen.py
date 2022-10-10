@@ -101,6 +101,7 @@ class GameScreen(pygame.sprite.Group):
             self.Reset()
 
     def Input(self, run):
+        IsTackle = -1
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -111,10 +112,12 @@ class GameScreen(pygame.sprite.Group):
                     self.BGSound.stop()
                 if event.key == pygame.K_z and self.BallImage.Team == 1:
                     self.TSound.play()
-                    if self.ListFB[self.CurFB[self.BallImage.Team]].CheckBall(self.BallImage.Position[0], self.BallImage.Position[1]):
+                    pos = self.BallImage.Position.copy()
+                    if self.ListFB[self.CurFB[0]].CheckBall(pos[0], pos[1]):
                         self.ListFB[self.BallImage.Player].IsStun = True
-                        self.BallImage.Team = self.FIT[self.BallImage.Player]
                         self.BallImage.Player = self.CurFB[0]
+                        self.BallImage.Team = self.FIT[self.BallImage.Player]
+                        IsTackle = 0
                 elif event.key == pygame.K_x and self.BallImage.Player != -1 and self.BallImage.Team == 0:
                     self.GameState = 1 - self.GameState
                     if self.GameState == 0:
@@ -132,10 +135,12 @@ class GameScreen(pygame.sprite.Group):
                 if Global.MODE == 1:
                     if event.key == pygame.K_j and self.BallImage.Team == 0:
                         self.TSound.play()
-                        if self.ListFB[self.CurFB[self.BallImage.Team]].CheckBall(self.BallImage.Position[0], self.BallImage.Position[1]):
+                        pos = self.BallImage.Position.copy()
+                        if self.ListFB[self.CurFB[1]].CheckBall(pos[0], pos[1]):
                             self.ListFB[self.BallImage.Player].IsStun = True
-                            self.BallImage.Team = self.FIT[self.BallImage.Player]
                             self.BallImage.Player = self.CurFB[1]
+                            self.BallImage.Team = self.FIT[self.BallImage.Player]
+                            IsTackle = 1
                     elif event.key == pygame.K_k and self.BallImage.Player != -1 and self.BallImage.Team == 1:
                         self.GameState = 1 - self.GameState
                         if self.GameState == 0:
@@ -153,6 +158,12 @@ class GameScreen(pygame.sprite.Group):
             if self.GameState == 0:
                 for idx in self.CurFB:
                     self.ListFB[idx].Input(event)
+                if IsTackle == 0:
+                    self.ListFB[self.CurFB[0]].HaveBall = True
+                    self.ListFB[self.CurFB[1]].HaveBall = False
+                elif IsTackle == 1:
+                    self.ListFB[self.CurFB[0]].HaveBall = False
+                    self.ListFB[self.CurFB[1]].HaveBall = True
             else:
                 self.AD.Input(event, self.BallImage.Team)
                 self.Pow.Input(event, self.BallImage.Team)

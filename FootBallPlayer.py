@@ -191,6 +191,12 @@ class FootBallPlayer(pygame.sprite.Sprite):
                         self.Sound.stop()
                         self.Speed[0] = 0
                         self.VectorDir[0] = 0
+                    elif event.key == pygame.K_f:
+                        self.Sound.stop()
+                        self.Speed[0] = 0
+                        self.Speed[1] = 0
+                        self.VectorDir[0] = 0
+                        self.VectorDir[1] = 0
             else:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
@@ -239,6 +245,12 @@ class FootBallPlayer(pygame.sprite.Sprite):
                         self.Sound.stop()
                         self.Speed[0] = 0
                         self.VectorDir[0] = 0
+                    elif event.key == pygame.K_i:
+                        self.Sound.stop()
+                        self.Speed[0] = 0
+                        self.Speed[1] = 0
+                        self.VectorDir[0] = 0
+                        self.VectorDir[1] = 0
 
     def Reset(self):
         self.Position = self.DefaultPos.copy()
